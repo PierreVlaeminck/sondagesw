@@ -26,7 +26,8 @@ Framework utilisé : Spring Boot
 - Sping DOC  
 
 ### 4 - Installation du projet :
-Logiciel requis : Intellij, Google Chrome(Nécessaire si vous voulez réaliser les tests de validation)
+Logiciel requis : Intellij, Google Chrome(Nécessaire si vous voulez réaliser les tests de validation)  
+Une base de donnée en local avec PhpMyAdmin pour tester le bon fonctionnement.
 Test de validaton à l'adresse suivante une fois le serveur lancé :  
 http://localhost:8080/swagger-ui/index.html#/
 
