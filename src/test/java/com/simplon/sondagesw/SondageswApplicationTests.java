@@ -56,16 +56,16 @@ class SondageswApplicationTests {
     @GetMapping("/rest/sondages")
     @Test
     public void testGetSondages() {
-        // Créer des sondages fictifs pour les tester
+        // Create dummy surveys to test
         Sondages sondage1 = new Sondages("Sondage 1", "Description du sondage 1", LocalDate.now(), LocalDate.now().plusDays(7), "Jean");
         Sondages sondage2 = new Sondages("Sondage 2", "Description du sondage 2", LocalDate.now(), LocalDate.now().plusDays(7), "Pierre");
         repository.saveAll(List.of(sondage1, sondage2));
 
-        // Envoyer une requête GET à /rest/sondages et récupérer la réponse
+        // Send a GET request to /rest/sondages and retrieve the response
         ResponseEntity<Sondages[]> responseEntity = restTemplate.getForEntity("http://localhost:" + port + "/rest/sondages", Sondages[].class);
         Sondages[] sondages = responseEntity.getBody();
 
-        // Vérifier que la réponse contient les deux sondages créés
+        // Verify that the response contains the two created surveys
         assertThat(responseEntity.getStatusCodeValue()).isEqualTo(200);
     }
 
@@ -117,14 +117,14 @@ class SondageswApplicationTests {
     void testDelSondage() {
         RestTemplate restTemplate = new RestTemplate();
 
-        //Ajouter un sondage de test
+        //Add a test survey
         Sondages sondages = new Sondages("Test", "Test", LocalDate.now(), LocalDate.now().plusDays(7), "Test");
         Sondages savedSondages = repository.save(sondages);
 
-        //Supprimer le sondage de test
+        //Delete the test survey
         restTemplate.delete("http://localhost:" + port + "/rest/sondages/" + savedSondages.getId());
 
-        //Vérifier que le sondage n'existe plus
+        //Verify that the survey no longer exists
         Optional<Sondages> deletedSondages = repository.findById(savedSondages.getId());
         assertFalse(deletedSondages.isPresent());
     }
@@ -141,16 +141,16 @@ class SondageswApplicationTests {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        //Ajouter un sondage de test
+        //Add a test survey
         Sondages sondages = new Sondages("Test", "Test", LocalDate.now(), LocalDate.now().plusDays(7), "Test");
         Sondages savedSondages = repository.save(sondages);
 
-        //Modifier le sondage de test
+        //Modify the test survey
         savedSondages.setDescription("Test modifié");
         HttpEntity<Sondages> request = new HttpEntity<>(savedSondages, headers);
         restTemplate.put("http://localhost:" + port + "/rest/sondages/" + savedSondages.getId(), request, Sondages.class);
 
-        //Vérifier que le sondage a été modifié
+        //Verify that the survey has been modified
         Optional<Sondages> updatedSondages = repository.findById(savedSondages.getId());
         assertTrue(updatedSondages.isPresent());
         assertEquals("Test modifié", updatedSondages.get().getDescription());

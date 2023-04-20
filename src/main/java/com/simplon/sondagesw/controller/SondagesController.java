@@ -48,7 +48,7 @@ public class SondagesController {
         if (newSondages.getDescription().length() < 3) {
             throw new IllegalArgumentException("Le champ description doit contenir au moins 3 caractères.");
         }
-        newSondages.setStartDate(LocalDate.now()); //Ajouter cette ligne pour mettre la dateStart à la date du jour
+        newSondages.setStartDate(LocalDate.now()); //Add this line to set dateStart to today's date
         return repo.save(newSondages);
     }
 
