@@ -4,12 +4,14 @@ import com.simplon.sondagesw.dao.impl.SondagesRepository;
 import com.simplon.sondagesw.entity.Sondages;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
 
 /**
  * This class represents a REST controller for managing surveys in a database.
  */
+@Valid
 @RestController
 public class SondagesController {
 
@@ -42,7 +44,7 @@ public class SondagesController {
      * @throws IllegalArgumentException if the length of the description is less than 3 characters
      */
     @PostMapping("/rest/sondages")
-    public Sondages addSondages(@RequestBody Sondages newSondages) {
+    public Sondages addSondages(@RequestBody @Valid Sondages newSondages) {
         if (newSondages.getDescription().length() < 3) {
             throw new IllegalArgumentException("Le champ description doit contenir au moins 3 caractères.");
         }
@@ -80,7 +82,7 @@ public class SondagesController {
      * @throws IllegalArgumentException if the end date is before the start date
      */
     @PutMapping("/rest/sondages/{id}")
-    public Sondages updateSondage(@RequestBody Sondages newSondage, @PathVariable long id) {
+    public Sondages updateSondage(@RequestBody @Valid Sondages newSondage, @PathVariable long id) {
         return repo.findById(id)
                 .map(sondages -> {
                     sondages.setDescription(newSondage.getDescription());
