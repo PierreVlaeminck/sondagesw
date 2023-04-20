@@ -108,6 +108,9 @@ class SondageswApplicationTests {
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
+
+        assertEquals("Test", response.getBody().getDescription());
+        assertEquals("Test", response.getBody().getQuestion());
         assertEquals("Test", response.getBody().getNom());
     }
 
