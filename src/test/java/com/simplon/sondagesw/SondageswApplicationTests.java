@@ -100,11 +100,15 @@ class SondageswApplicationTests {
     @Test
     void testGetSondage() {
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Sondages> response = restTemplate.getForEntity("http://localhost:" + port + "/rest/sondages/1", Sondages.class);
+
+        Sondages sondages = new Sondages("Test", "Test", LocalDate.now(), LocalDate.now().plusDays(7), "Test");
+        Sondages savedSondages = repository.save(sondages);
+
+        ResponseEntity<Sondages> response = restTemplate.getForEntity("http://localhost:" + port + "/rest/sondages/"  + savedSondages.getId(), Sondages.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
-        assertEquals("inconnu", response.getBody().getNom());
+        assertEquals("Test", response.getBody().getNom());
     }
 
     /**
