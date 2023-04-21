@@ -45,7 +45,7 @@ public class SondagesController {
      */
     @PostMapping("/rest/sondages")
     public Sondages addSondages(@RequestBody @Valid Sondages newSondages) {
-        newSondages.setStartDate(LocalDate.now());
+        // newSondages.setStartDate(LocalDate.now());
         return repo.save(newSondages);
     }
 
