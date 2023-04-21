@@ -25,7 +25,7 @@ public class Sondages {
 
     @NotNull
     @FutureOrPresent
-    private LocalDate startDate;
+    private LocalDate startDate = LocalDate.now();
 
     @NotNull
     @Future
