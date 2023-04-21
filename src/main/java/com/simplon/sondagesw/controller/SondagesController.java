@@ -45,14 +45,7 @@ public class SondagesController {
      */
     @PostMapping("/rest/sondages")
     public Sondages addSondages(@RequestBody @Valid Sondages newSondages) {
-        if (newSondages.getDescription().length() < 3) {
-            throw new IllegalArgumentException("Le champ description doit contenir au moins 3 caractères.");
-        }
-        LocalDate now = LocalDate.now();
-        if (newSondages.getStartDate().isBefore(now)) {
-            throw new IllegalArgumentException("La date de début ne peut pas être antérieure à la date du jour.");
-        }
-        newSondages.setStartDate(now); //Add this line to set dateStart to today's date
+        newSondages.setStartDate(LocalDate.now());
         return repo.save(newSondages);
     }
 

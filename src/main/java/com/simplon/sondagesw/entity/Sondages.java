@@ -3,6 +3,8 @@ package com.simplon.sondagesw.entity;
 import jakarta.persistence.*;
 import org.jetbrains.annotations.NotNull;
 
+import javax.validation.constraints.Future;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
@@ -22,9 +24,11 @@ public class Sondages {
     private String question;
 
     @NotNull
+    @FutureOrPresent
     private LocalDate startDate;
 
     @NotNull
+    @Future
     private LocalDate endDate;
 
     @NotNull
