@@ -26,7 +26,15 @@ Base de donnée : PhpMyAdmin
 - Spring Validation  
 - Sping DOC  
 
-### 4 - Installation du projet :
+### 4 - Points d'entrée de l'API
+
+- GET /rest/votes/ : Récupère la liste de tous les sondages dont la date de cloture est dans le futur
+- GET /rest/votes/{id} : Lecture du sondage {id} et retour au format JSON
+- POST /rest/votes/ : Création d'un nouveau sondage puis réponse HTTP 200
+- PUT /rest/votes/{id} : Modification du sondage {id} puis réponse HTTP 200
+- DELETE /rest/votes/{id} : Suppression du sondage {id} puis réponse HTTP 200
+
+### 5 - Installation du projet :
 Logiciel requis : Intellij, Google Chrome(Nécessaire si vous voulez réaliser les tests de validation)  
 Une base de donnée en local avec PhpMyAdmin est nécessaire pour tester le bon fonctionnement.
 Vous pouvez réaliser des tests de validaton à l'adresse suivante une fois le serveur lancé :  
@@ -37,7 +45,7 @@ Attention si lors du lancement du web service cela vous affiche une erreur pour 
 vous pouvez alors venir le modifier dans le fichier "application.properties", il suffit pour cela d'ajouter :
 server.port="numéro de port"
 
-### 5 - Equipes :
+### 6 - Equipes :
 Projet réalisé seul.
 
 Merci d'avoir pris le temp de lire le ReadMe.
