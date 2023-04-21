@@ -3,6 +3,7 @@ package com.simplon.sondagesw.entity;
 import jakarta.persistence.*;
 import org.jetbrains.annotations.NotNull;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
@@ -26,6 +27,8 @@ public class Sondages {
     @NotNull
     private LocalDate endDate;
 
+    @NotNull
+    @NotBlank
     @Column(length = 50)
     private String nom;
 
