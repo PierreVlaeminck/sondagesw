@@ -16,6 +16,7 @@ sondagecs (Sondage client service)
 Code réalisé avec : Intellij  
 Outils collaboratifs : GitHub  
 Framework utilisé : Spring Boot
+Base de donnée : PhpMyAdmin
 
 #### Bibliothèques utilisées :
 - Spring Boot DevTools  
@@ -27,11 +28,16 @@ Framework utilisé : Spring Boot
 
 ### 4 - Installation du projet :
 Logiciel requis : Intellij, Google Chrome(Nécessaire si vous voulez réaliser les tests de validation)  
-Une base de donnée en local avec PhpMyAdmin pour tester le bon fonctionnement.
-Test de validaton à l'adresse suivante une fois le serveur lancé :  
+Une base de donnée en local avec PhpMyAdmin est nécessaire pour tester le bon fonctionnement.
+Vous pouvez réaliser des tests de validaton à l'adresse suivante une fois le serveur lancé :  
 http://localhost:8080/swagger-ui/index.html#/
+
+#### Lancement du projet :
+Attention si lors du lancement du web service cela vous affiche une erreur pour le port utilisé,
+vous pouvez alors venir le modifier dans le fichier "application.properties", il suffit pour cela d'ajouter :
+server.port="numéro de port"
 
 ### 5 - Equipes :
 Projet réalisé seul.
 
-Merci d'avoir pris le temp de lire le ReadMe
+Merci d'avoir pris le temp de lire le ReadMe.

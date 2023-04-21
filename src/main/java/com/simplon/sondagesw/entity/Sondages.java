@@ -88,8 +88,4 @@ public class Sondages {
         this.nom = nom;
     }
 
-    // Ajoutez cette méthode de validation personnalisée
-    public boolean isValid() {
-        return this.startDate != null && this.endDate != null && !this.endDate.isBefore(this.startDate);
-    }
 }
